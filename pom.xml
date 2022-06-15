@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.xinxisimple</groupId>
+    <artifactId>spring-examples</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+    <name>spring-examples</name>
+    <url>https://github.com/xinxisimple/spring-examples</url>
+
+    <properties>
+        <jackson.version>2.13.3</jackson.version>
+    </properties>
+
+    <modules>
+        <module>spring-boot-helloworld</module>
+        <module>spring-boot-test</module>
+        <module>spring-boot-actuator</module>
+        <module>spring-boot-banner</module>
+        <module>spring-cloud-config-server</module>
+        <module>spring-cloud-consul</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- 1.继承(parent)的方式: 继承 `spring-boot-starter-parent` 然后依赖需要的包(-web等)；继承 `spring-boot-dependencies` 并依赖 `spring-boot-starter`，在依赖需要的包(-web等) -->
+            <!-- 2.import 导入的方式 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>2.6.1</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>2021.0.3</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+    <organization>
+        <url>https://www.xinxisimple.com</url>
+        <name>xinxisimple</name>
+    </organization>
+
+</project>
